@@ -25,15 +25,15 @@ package br.spoj.command;
 public enum SpojHost {
 
 	/** Armenian problem set - am.spoj.com */
-	ARMENIAN("am", "am.spoj.com", "լուծված է", "սխալ պատասխան", "ժամանակի սահմանափակումը գերազանցված է", "սխալ կատարման ընթացքում  \\([A-Z]+\\)", "կոմպիլյացիայի սխալ"),
+	ARMENIAN("am", "am.spoj.com", "լուծված է", "սխալ պատասխան", "ժամանակի սահմանափակումը գերազանցված է", "սխալ կատարման ընթացքում  \\([A-Z]+\\)", "կոմպիլյացիայի սխալ", "Խնդրի կոդը սխալ է։"),
 	/** English problem set - www.spoj.com */
-	ENGLISH("en", "www.spoj.com", "(accepted)|([0-9]+)", "wrong answer.*", "time limit exceeded", "runtime error \\([A-Z]+\\)", "compilation error"),
+	ENGLISH("en", "www.spoj.com", "(accepted)|([0-9]+)", "wrong answer.*", "time limit exceeded", "runtime error \\([A-Z]+\\)", "compilation error", "Wrong problem code!"),
 	/** Polish problem set - pl.spoj.com */
-	POLISH("pl","pl.spoj.com", "(zaakceptowano)|([0-9]+)", "(błędna odpowiedź)|([0-9]+ \\(limit: [0-9]+\\))|([0-9]+(\\.[0-9]+)? \\(threshold: [0-9]+\\))", "przekroczono limit czasu", "błąd wykonania \\([A-Z]+\\)", "błąd kompilacji"),
+	POLISH("pl","pl.spoj.com", "(zaakceptowano)|([0-9]+)", "(błędna odpowiedź)|([0-9]+ \\(limit: [0-9]+\\))|([0-9]+(\\.[0-9]+)? \\(threshold: [0-9]+\\))", "przekroczono limit czasu", "błąd wykonania \\([A-Z]+\\)", "błąd kompilacji", "Nieprawidłowy kod problemu!"),
 	/** Portuguese-BR problem set - br.spoj.com */
-	PORTUGUESE_BR("br","br.spoj.com", "aceito", "resposta errada", "tempo limite excedido", "erro em tempo de execução \\([A-Z]+\\)", "erro de compilação"),
+	PORTUGUESE_BR("br","br.spoj.com", "aceito", "resposta errada", "tempo limite excedido", "erro em tempo de execução \\([A-Z]+\\)", "erro de compilação", "Wrong problem code!"),
 	/** Vietnamese problem set - vn.spoj.com */
-	VIETNAMESE("vn", "vn.spoj.com", "(Đạt yêu cầu)|([0-9]+)(\\.[0-9]+)?", "kết quả sai.*", "chạy quá lâu", "chạy bị lỗi \\([A-Z]+\\)", "biên dịch gặp lỗi");
+	VIETNAMESE("vn", "vn.spoj.com", "(Đạt yêu cầu)|([0-9]+)(\\.[0-9]+)?", "kết quả sai.*", "chạy quá lâu", "chạy bị lỗi \\([A-Z]+\\)", "biên dịch gặp lỗi", "Wrong problem code!");
 	
 	private String abbreviation;
 	private String address;
@@ -43,6 +43,8 @@ public enum SpojHost {
 	private String tle_regex;
 	private String re_regex;
 	private String ce_regex;
+	
+	private String wrongProblemCode;
 
 	/**
 	 * Creates a SpojHost.
@@ -54,8 +56,9 @@ public enum SpojHost {
 	 * @param tle_regex the regular expression to identify a time limit exceeded answer in this host.
 	 * @param re_regex the regular expression to identify a runtime error in this host.
 	 * @param ce_regex the regular expression to identify a compilation error in this host.
+	 * @param wrongProblemCode TODO
 	 */
-	private SpojHost(String abbreviation, String address, String ac_regex, String wa_regex, String tle_regex, String re_regex, String ce_regex) {
+	private SpojHost(String abbreviation, String address, String ac_regex, String wa_regex, String tle_regex, String re_regex, String ce_regex, String wrongProblemCode) {
 		this.abbreviation = abbreviation;
 		this.address = address;
 		this.ac_regex = ac_regex;
@@ -63,6 +66,7 @@ public enum SpojHost {
 		this.tle_regex = tle_regex;
 		this.re_regex = re_regex;
 		this.ce_regex = ce_regex;
+		this.wrongProblemCode = wrongProblemCode;
 	}
 	
 	/**
@@ -105,6 +109,10 @@ public enum SpojHost {
 			return SubmissionResult.COMPILATION_ERROR;
 		}
 		return null;
+	}
+	
+	public String getWrongProblemCodeString() {
+		return wrongProblemCode;
 	}
 	
 	/**

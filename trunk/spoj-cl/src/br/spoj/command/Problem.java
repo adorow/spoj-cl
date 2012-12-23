@@ -18,11 +18,12 @@ package br.spoj.command;
 
 import java.io.IOException;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 
 // Para executar:
 // http://br.spoj.pl/problems/<CODIGO PROBLEMA/
-// E buscar a definição completa de um determinado problema
+// E buscar a definiï¿½ï¿½o completa de um determinado problema
 public class Problem  extends DefaultSpojCommand {
 
 	private String problemCode;
@@ -43,24 +44,67 @@ public class Problem  extends DefaultSpojCommand {
 		final String path = "/problems/" + problemCode;
 
 		try {
-			HttpResponse response = context().executeGet(path);
-			String httpResponse = getAsString(response);
+			HttpResponse httpResponse = context().executeGet(path);
+			String response = getAsString(httpResponse);
 
-			final String start = "<div class=\"prob\">"; 
-			final String end = "</div>";
+			response = getProb(response);
 			
-			int iStart = httpResponse.indexOf(start);
-			int iEnd = httpResponse.indexOf(end, iStart+start.length());
+			if (StringUtils.isEmpty(response)) {
+				final String content = getContent(response);
+				if (content.contains(context().getHost().getWrongProblemCodeString())) {
+					return "Wrong problem code!";
+				} else {
+					return "Unable to identify problem";
+				}
+			}
 			
-			final String htmlProblem = httpResponse.substring(iStart+start.length(), iEnd);
+			response = removeHeader(response);
+			response = removeComments(response);
 			
-			final String noHtmlProblem = translateHtmlToString(htmlProblem);
+			response = translateHtmlToString(response);
 			
-			return noHtmlProblem;
+			return response;
 			
 		} catch (IOException ioe) {
 			throw new SpojCommandExecutionException(ioe);
 		}
 	}
 
+	private String removeHeader(String response) {
+		int begginingOfProblemDescription = response.indexOf("<table ");
+		return response.substring(begginingOfProblemDescription);
+	}
+
+	private String removeComments(String response) {
+		int begginingOfComments = response.indexOf("<div id=\"ccontent\"");
+		return response.substring(0, begginingOfComments);
+	}
+
+	private String getContent(String html) {
+		return get(html, "td", "content");
+	}
+	
+	private String getProb(String html) {
+		return get(html, "div", "prob");
+	}
+	
+	private String get(String html, String tag, String classAttribute) {
+		final String startTag = "<" + tag + " class=\"" + classAttribute + "\"";
+		final String endTag = "</" + tag + ">";
+		
+		int start = html.indexOf(startTag);
+		if (start < 0) return "";
+		
+		// ignore internal tags of the same type to find the last one
+		int end = html.indexOf(endTag, start);
+		int nextStartTag = html.indexOf("<" + tag, start + 1);
+		while (nextStartTag > -1 && nextStartTag < end) {
+			end = html.indexOf(endTag, end + 1);
+			nextStartTag = html.indexOf("<" + tag, nextStartTag + 1);
+		}
+		
+		if (end < 0) return "";
+		return html.substring(start, end + endTag.length());
+	}
+	
 }
