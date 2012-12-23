@@ -19,9 +19,12 @@ package br.spoj.command;
 public enum CommandDef {
 
 	EXIT("Exits the application"),
+	GET_HOST("Shows the current host being used"),
 	HELP("Shows a list of all the possible commands"),
 	INFO("Shows info about the program"),
 	LICENSE("Shows the software's license"),
+	LIST_HOSTS("Lists all possible hosts to connect to"),
+	LIST_PLS("Lists all possible programming languages to use on code submissions"),
 	SET_HOST("Change the SPOJ host to connect to"),
 	LOGIN("Log into the currently set SPOJ host"),
 	LOGOUT("Logs out of the current SPOJ host"),
