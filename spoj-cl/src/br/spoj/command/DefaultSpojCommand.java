@@ -116,7 +116,6 @@ abstract class DefaultSpojCommand implements SpojCommand {
 	 * @throws SpojCommandExecutionException always thrown.
 	 */
 	protected final void unknownErrorReceived(String httpResult) throws SpojCommandExecutionException {
-		// TODO give a better error message?
 		throw new SpojCommandExecutionException("There is a problem, but I don't know what it is. Here is the response I received: \n" + httpResult);
 	}
 	
