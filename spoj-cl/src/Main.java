@@ -51,12 +51,7 @@ public class Main {
 				arguments = null;
 			}
 			
-			CommandDef cmd = CommandDef.get(cmdName);
-			if (cmd == null) {
-				out.println("Command '" + cmdName + "' not recognized");
-				continue;
-			}
-			
+			final CommandDef cmd = CommandDef.get(cmdName);
 			final SpojCommand spojCommand;
 			
 			try {
