@@ -21,7 +21,7 @@ public enum CommandDef {
 	EXIT("Exits the application"),
 	HELP("Shows a list of all the possible commands"),
 	INFO("Shows info about the program"),
-	SETHOST("Change the SPOJ host to connect to"),
+	SET_HOST("Change the SPOJ host to connect to"),
 	LOGIN("Log into the currently set SPOJ host"),
 	LOGOUT("Logs out of the current SPOJ host"),
 	PROBLEM("Loads a problem"),
@@ -44,14 +44,18 @@ public enum CommandDef {
 		return this != UNKNOWN;
 	}
 	
+	public String getCommandName() {
+		return name().replaceAll("_", "").toLowerCase();
+	}
+	
 	@Override
 	public String toString() {
-		return name().toLowerCase();
+		return getCommandName();
 	}
 	
 	public static CommandDef get(String name) {
 		for (CommandDef def : CommandDef.values()) {
-			if (def.name().equalsIgnoreCase(name)) {
+			if (def.getCommandName().equalsIgnoreCase(name)) {
 				return def;
 			}
 		}
