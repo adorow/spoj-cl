@@ -24,7 +24,7 @@ import br.spoj.ProgrammingLanguage;
 public class ListProgrammingLanguages  extends DefaultSpojCommand {
 
 	/**
-	 * Creates a help command.
+	 * Creates a listpls command.
 	 */
 	public ListProgrammingLanguages() {
 	}
