@@ -54,7 +54,7 @@ public enum ProgrammingLanguage {
 	/** Fortran 95 */
 	FORTRAN_95(5, "Fortran", "gfortran 4.3.2"),
 	/** Haskell */
-	HASKELL(21, "Haskell", "ghc 6.10.4"),
+	HASKELL(21, "Haskell", "ghc 6.10.4", "hs"),
 	/** Icon */
 	ICON(16, "Icon", "iconc 9.4.3"),
 	/** Intercal */
@@ -64,7 +64,7 @@ public enum ProgrammingLanguage {
 	/** Java */
 	JAVA(10, "Java", "Java SE 6", "java"),
 	/** Lua */
-	LUA(26, "Lua", "luac 5.1.3"),
+	LUA(26, "Lua", "luac 5.1.3", "lua"),
 	/** Nemerle */
 	NEMERLE(30, "Nemerle", "ncc 0.9.3"),
 	/** Nice */
@@ -86,7 +86,7 @@ public enum ProgrammingLanguage {
 	/** Python */
 	PYTHON(4, "Python", "python 2.5", "py"),
 	/** Ruby */
-	RUBY(17, "Ruby", "ruby 1.9.0"),
+	RUBY(17, "Ruby", "ruby 1.9.0", "rb"),
 //	/** Scheme */
 //	SCHEME(18, "Scheme", "stalin 0.11"),
 	/** Scheme */

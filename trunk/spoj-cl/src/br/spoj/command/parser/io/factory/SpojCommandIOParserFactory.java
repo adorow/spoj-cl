@@ -19,9 +19,12 @@ package br.spoj.command.parser.io.factory;
 import br.spoj.command.CommandDef;
 import br.spoj.command.SpojCommand;
 import br.spoj.command.parser.io.ExitIOParser;
+import br.spoj.command.parser.io.GetHostIOParser;
 import br.spoj.command.parser.io.HelpIOParser;
 import br.spoj.command.parser.io.InfoIOParser;
 import br.spoj.command.parser.io.LicenseIOParser;
+import br.spoj.command.parser.io.ListHostsIOParser;
+import br.spoj.command.parser.io.ListProgrammingLanguagesIOParser;
 import br.spoj.command.parser.io.LoginIOParser;
 import br.spoj.command.parser.io.LogoutIOParser;
 import br.spoj.command.parser.io.ProblemIOParser;
@@ -50,12 +53,18 @@ public final class SpojCommandIOParserFactory {
 		switch (cmd) {
 		case EXIT:
 			return new ExitIOParser();
+		case GET_HOST:
+			return new GetHostIOParser();
 		case HELP:
 			return new HelpIOParser();
 		case INFO:
 			return new InfoIOParser();
 		case LICENSE:
 			return new LicenseIOParser();
+		case LIST_HOSTS:
+			return new ListHostsIOParser();
+		case LIST_PLS:
+			return new ListProgrammingLanguagesIOParser();
 		case SET_HOST:
 			return new SetHostIOParser();
 		case LOGIN:
