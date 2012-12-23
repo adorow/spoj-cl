@@ -54,8 +54,6 @@ abstract class DefaultSpojCommand implements SpojCommand {
 		return new BasicNameValuePair(name, value);
 	}
 	
-
-
 	/**
 	 * Reads the response, and gives a {@link String} with the content.
 	 * @param response the response.
