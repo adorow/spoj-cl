@@ -21,6 +21,7 @@ import br.spoj.command.SpojCommand;
 import br.spoj.command.parser.io.ExitIOParser;
 import br.spoj.command.parser.io.HelpIOParser;
 import br.spoj.command.parser.io.InfoIOParser;
+import br.spoj.command.parser.io.LicenseIOParser;
 import br.spoj.command.parser.io.LoginIOParser;
 import br.spoj.command.parser.io.LogoutIOParser;
 import br.spoj.command.parser.io.ProblemIOParser;
@@ -53,6 +54,8 @@ public final class SpojCommandIOParserFactory {
 			return new HelpIOParser();
 		case INFO:
 			return new InfoIOParser();
+		case LICENSE:
+			return new LicenseIOParser();
 		case SET_HOST:
 			return new SetHostIOParser();
 		case LOGIN:
