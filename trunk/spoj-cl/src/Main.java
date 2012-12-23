@@ -35,15 +35,6 @@ public class Main {
 		final Console console = System.console();
 		final PrintStream out = System.out;
 
-		// FIXME test apache cli
-		// FIXME show gpl3.0 license
-		// FIXME add command to show all languages      (showlanguages)
-		// FIXME add command to show all hosts          (showhosts)
-		// FIXME add command to show the current host   (gethost)
-		// FIXME add command to show problem categories (problemcategories)
-		// FIXME add command to show problems from cat. (showproblems <category>)
-		// FIXME add command to search problems 		(searchproblems <partial_name>)
-
 		out.println(new Info().execute());
 		
 		String cmdName;
