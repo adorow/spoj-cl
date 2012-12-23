@@ -21,6 +21,7 @@ public enum CommandDef {
 	EXIT("Exits the application"),
 	HELP("Shows a list of all the possible commands"),
 	INFO("Shows info about the program"),
+	LICENSE("Shows the software's license"),
 	SET_HOST("Change the SPOJ host to connect to"),
 	LOGIN("Log into the currently set SPOJ host"),
 	LOGOUT("Logs out of the current SPOJ host"),

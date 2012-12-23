@@ -21,6 +21,7 @@ import br.spoj.command.SpojCommand;
 import br.spoj.command.parser.line.ExitLineParser;
 import br.spoj.command.parser.line.HelpLineParser;
 import br.spoj.command.parser.line.InfoLineParser;
+import br.spoj.command.parser.line.LicenseLineParser;
 import br.spoj.command.parser.line.LoginLineParser;
 import br.spoj.command.parser.line.LogoutLineParser;
 import br.spoj.command.parser.line.ProblemLineParser;
@@ -53,6 +54,8 @@ public final class SpojCommandLineParserFactory {
 			return new HelpLineParser();
 		case INFO:
 			return new InfoLineParser();
+		case LICENSE:
+			return new LicenseLineParser();
 		case SET_HOST:
 			return new SetHostLineParser();
 		case LOGIN:
