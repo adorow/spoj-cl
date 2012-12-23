@@ -1,0 +1,1 @@
+java -jar spoj-cl.jar
