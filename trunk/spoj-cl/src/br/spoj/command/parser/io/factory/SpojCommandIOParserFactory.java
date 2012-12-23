@@ -53,7 +53,7 @@ public final class SpojCommandIOParserFactory {
 			return new HelpIOParser();
 		case INFO:
 			return new InfoIOParser();
-		case SETHOST:
+		case SET_HOST:
 			return new SetHostIOParser();
 		case LOGIN:
 			return new LoginIOParser();

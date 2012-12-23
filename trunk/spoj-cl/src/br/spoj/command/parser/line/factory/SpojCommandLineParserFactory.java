@@ -53,7 +53,7 @@ public final class SpojCommandLineParserFactory {
 			return new HelpLineParser();
 		case INFO:
 			return new InfoLineParser();
-		case SETHOST:
+		case SET_HOST:
 			return new SetHostLineParser();
 		case LOGIN:
 			return new LoginLineParser();
