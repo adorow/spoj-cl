@@ -37,7 +37,6 @@ public class SetHost extends DefaultSpojCommand {
 		SpojHost newHost = SpojHost.getByAbbreviation(hostAbbreviation);
 		if (newHost == null)
 		{
-			// TODO add info on what are the right values
 			throw new SpojCommandExecutionException("'" + hostAbbreviation + "' is not a valid host value.");
 		}
 		
